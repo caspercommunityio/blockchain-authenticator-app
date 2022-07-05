@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="status == 'sync'" color="casper" (click)="setBlockchainParams()">
+        <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'sync'" color="casper" (click)="selectWalletPublicKey()">
+        <ion-icon slot="icon-only" name="wallet-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'sync'" color="casper" (click)="desyncAllData()">
+        <ion-icon slot="icon-only" name="cloud-offline-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'sync'" color="casper" (click)="syncToBlockchain('del')">
+        <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'sync'" color="casper" (click)="syncToBlockchain('add')">
+        <ion-icon slot="icon-only" name="cloud-upload-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'normal'" id="trigger-button" color="casper" (click)="showMenu()">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="status == 'sync' || status == 'edit'" color="casper" (click)="setMode('normal')">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="casper">Blockchain Authenticator</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="secretCodes.length > 0">
+    <ion-reorder-group [disabled]="status !== 'edit'" (ionItemReorder)="doReorder($event)">
+      <ion-item *ngFor="let i of secretCodes">
+        <ion-reorder *ngIf="status == 'edit'" slot="start">
+        </ion-reorder>
+        <ion-checkbox slot="start" *ngIf="status == 'sync'" color="primary" [(ngModel)]="i.isChecked" mode="ios"></ion-checkbox>
+        <div>
+          <ion-label class="secret-label">{{i.n}}
+          </ion-label>
+          <div *ngIf="status == 'normal'" class="secret-token ion-pointer" (click)="copyOTP(i.token)" [ngClass]="{'blink': currentTimer >= 25}" [ngStyle]="{color : i.sync === false  ? 'var(--ion-color-warning)' : 'var(--ion-color-medium)' }">
+            {{i.token}}
+          </div>
+          <div *ngIf="status != 'normal'" class="secret-token" [ngStyle]="{color : i.sync === false  ? 'var(--ion-color-warning)' : 'var(--ion-color-medium)' }">
+            * * * * * *
+          </div>
+        </div>
+        <div slot="end" *ngIf="status == 'normal'">
+          <svg class="svg_anti_clockwise">
+            <circle class="svg_anti_clockwise_circle" [ngClass]="{'animated-circle' : status == 'normal'}" style="" cx="50%" cy="50%" r="75" [ngStyle]="{'stroke': i.sync === false  ? 'var(--ion-color-warning)' : 'var(--ion-color-medium)'}" />
+          </svg>
+        </div>
+
+        <div slot="end" *ngIf=" status == 'edit'">
+          <ion-button [fill]="'clear'" (click)="addSecretCode(i.n,i.s,'edit')" color="medium">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button [fill]="'clear'" (click)="removeSecretCode(i)" color="medium">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+
+        </div>
+      </ion-item>
+    </ion-reorder-group>
+  </ion-list>
+  <div *ngIf="secretCodes.length == 0" class="ion-text-center ion-padding-top">
+    You don't have any authenticator code for the moment.<br />
+    Load it from the blockchain or add a new code
+  </div>
+
+</ion-content>

@@ -1,0 +1,78 @@
+ion-footer {
+  ion-button {
+    font-size: 1.6rem;
+  }
+}
+
+.modal-wrapper {
+  background: red !important;
+}
+
+.ion-pointer {
+  cursor: pointer;
+}
+
+.secret-label {
+  font-size: 1.2rem;
+  color: var(--ion-color-dark);
+  line-height: 3rem;
+}
+
+.secret-token {
+  font-size: 2rem;
+  letter-spacing: 5px;
+  padding-bottom: 16px;
+  font-weight: 400;
+}
+
+.animated-circle {
+  animation: anti-clock-animation 30s linear infinite;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+  color: var(--ion-color-danger) !important;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0.3;
+  }
+}
+$full_stroke-dashoffset: 471;
+$stroke-dashoffset: 0;
+@mixin svg {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+}
+@mixin circle {
+  fill: transparent;
+  stroke-width: 150px;
+  stroke-dasharray: 471;
+  stroke-dashoffset: 471;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+@mixin animation-mixin($name, $from, $to) {
+  @keyframes #{$name} {
+    0% {
+      stroke-dashoffset: $from;
+    }
+
+    100% {
+      stroke-dashoffset: $to;
+    }
+  }
+}
+@include animation-mixin(clock-animation, $full_stroke-dashoffset, $stroke-dashoffset);
+@include animation-mixin(anti-clock-animation, $stroke-dashoffset, $full_stroke-dashoffset);
+
+.svg_anti_clockwise {
+  @include svg;
+  background: transparent;
+
+  &_circle {
+    @include circle;
+    stroke: var(--ion-color-primary);
+  }
+}

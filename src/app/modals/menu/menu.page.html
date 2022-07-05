@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="primary">
+
+      <ion-button color="danger" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title color="casper">Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" size="default" color="light" (click)="selectMenu('scanqrcode')">
+          <div>
+            <ion-icon name="qr-code-outline" color="casper"></ion-icon><br />
+            <ion-text>Scan QR Code</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" size="default" color="light" (click)="selectMenu('addsecretcode')">
+          <div>
+            <ion-icon name="text-outline" color="casper"></ion-icon><br />
+            <ion-text>Add manually</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" size="default" color="light" (click)="selectMenu('generateqrcode')">
+          <div>
+            <ion-icon name="server-outline" color="casper"></ion-icon><br />
+            <ion-text>Export</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" size="default" color="light" (click)="selectMenu('editmode')">
+          <div>
+            <ion-icon name="create-outline" color="casper"></ion-icon><br />
+            <ion-text>Manage</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button [disabled]="isMobile()" expand="block" size="default" color="light" (click)="selectMenu('setpassphrase')">
+          <div>
+            <ion-icon name="ellipsis-horizontal-outline" color="casper"></ion-icon><br />
+            <ion-text>Passphrase</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button [disabled]="isMobile()" expand="block" size="default" color="light" (click)="selectMenu('activatesyncblockchain')">
+          <div>
+            <ion-icon name="cloud-upload-outline" color="casper"></ion-icon><br />
+            <ion-text>Blockchain Sync.</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <small>Made with the help of <a href="https://devxdao.com" target="_blank">DEVxDAO</a> 💖</small><br>
+        <small class="ion-text-center">Version : {{version}}</small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

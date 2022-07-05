@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="primary">
+      <ion-button color="success" (click)="dismiss()">
+        <ion-icon slot="icon-only" name="checkmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title color="casper">Configuration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-text-center ion-padding">
+    Set the name of the named key where you want to store your data
+  </div>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="namedKey" (ionChange)="namedKeyChanged()"></ion-input>
+  </ion-item>
+  <div class="ion-text-center ion-padding">
+    Set the gas fees to apply to the call of the smart contract.
+  </div>
+  <ion-item>
+    <ion-range [min]="gasFeesMin" [max]="gasFeesMax" step="0.5" [(ngModel)]="fees" [pin]="true" snaps="true" [pinFormatter]="formatPin" color="casper" (ionChange)="feesChanged()">
+      <ion-icon size="small" slot="start" name="cash-outline"></ion-icon>
+      <ion-icon slot="end" name="cash-outline"></ion-icon>
+    </ion-range>
+  </ion-item>
+</ion-content>

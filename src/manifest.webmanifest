@@ -1,0 +1,17 @@
+{
+  "name": "BC Authenticator",
+  "short_name": "BC Authenticator",
+  "theme_color": "#f4f5f8",
+  "background_color": "#f4f5f8",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

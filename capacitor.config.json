@@ -1,0 +1,6 @@
+{
+  "appId": "io.caspercommunity.authenticator",
+  "appName": "BlockchainAuthenticator",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

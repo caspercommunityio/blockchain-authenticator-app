@@ -1,0 +1,11 @@
+{
+  "name": "BlockchainAuthenticator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "a885c0a3",
+  "hooks": {
+    "build:before": "./config/build-before.js"
+  }
+}

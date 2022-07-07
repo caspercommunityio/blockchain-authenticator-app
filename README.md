@@ -83,6 +83,20 @@ Sometimes Jasmine generates an error and all bullets are green.
 If it's the case, run severals times the tests (and/or run in debug too).<br>
 I think it's something with the Ionic framework.
 
+## How to Generate the doc
+
+Install the following package globally :
+
+```
+npm install typedoc --global
+```
+
+Then you can generate a "docs" folder with all the documentation with :
+
+```
+typedoc --out docs --entryPointStrategy expand ./src/*
+```
+
 ## User's guide
 
 ### How to add an authenticator code via the camera

@@ -1,0 +1,268 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>blockchain-authenticator</title><meta name="description" content="Documentation for blockchain-authenticator"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">blockchain-authenticator</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2> blockchain-authenticator</h2></div>
+<div class="tsd-panel tsd-typography"><p align="center"><a href="https://analytics.caspercommunity.io" target="_blank"><img src="https://analytics.caspercommunity.io/assets/icon/android-chrome-512x512.png" width="150"></a></p>
+
+
+<a href="#about-blockchain-authenticator" id="about-blockchain-authenticator" style="color: inherit; text-decoration: none;">
+  <h2>About Blockchain Authenticator</h2>
+</a>
+<p>Webapp to generate TOTP (Time based One-Time Password) password.</p>
+<p>The secret code needed to generate the OTP (One-Time Password) can be stored on the blockchain of your choice.<br>
+In our case, we&#39;ve started with the Casper&#39;s Blockchain. For that reason, we&#39;ve writed a <a href="https://github.com/caspercommunityio/blockchain-authenticator-contract">basic smartcontrat</a></p>
+<p>The last version of this smartcontract is include in the sources (see : src/assets)</p>
+
+<a href="#live-version" id="live-version" style="color: inherit; text-decoration: none;">
+  <h2>Live Version</h2>
+</a>
+<p>You must have the Casper Signer installed to use this app. <br>If you don&#39;t know how to use the Signer, please <a href="https://docs.cspr.community/docs/user-guides/SignerGuide.html">follow these instructions</a></p>
+<p>You can access the mainnet app at <a href="https://authenticator.caspercommunity.io">https://authenticator.caspercommunity.io</a></p>
+
+<a href="#how-to-install" id="how-to-install" style="color: inherit; text-decoration: none;">
+  <h2>How to install</h2>
+</a>
+<p>The webapp is build using the <a href="https://ionicframework.com/">Ionic Framework</a><br>
+You must have <a href="https://nodejs.org/en/">Node &amp; npm</a> and <a href="https://git-scm.com/downloads">Git</a>.</p>
+<p>We use the following version of node :</p>
+<pre><code><span class="hl-0">node</span><span class="hl-1"> --</span><span class="hl-0">version</span><br/><span class="hl-0">v16</span><span class="hl-1">.</span><span class="hl-2">15.1</span>
+</code></pre>
+
+<a href="#install-dependecies" id="install-dependecies" style="color: inherit; text-decoration: none;">
+  <h3>Install dependecies</h3>
+</a>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span><span class="hl-1"> -</span><span class="hl-0">g</span><span class="hl-1"> @</span><span class="hl-0">ionic</span><span class="hl-1">/</span><span class="hl-0">cli</span><br/><span class="hl-0">git</span><span class="hl-1"> </span><span class="hl-0">clone</span><span class="hl-1"> </span><span class="hl-0">git</span><span class="hl-1">@</span><span class="hl-0">github</span><span class="hl-1">.</span><span class="hl-0">com</span><span class="hl-1">:</span><span class="hl-0">caspercommunityio</span><span class="hl-1">/</span><span class="hl-0">blockchain</span><span class="hl-1">-</span><span class="hl-0">authenticator</span><span class="hl-1">-</span><span class="hl-0">app</span><span class="hl-1">.</span><span class="hl-0">git</span><br/><span class="hl-0">cd</span><span class="hl-1"> </span><span class="hl-0">blockchain</span><span class="hl-1">-</span><span class="hl-0">authenticator</span><span class="hl-1">-</span><span class="hl-0">app</span><br/><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span>
+</code></pre>
+
+<a href="#environment-settings" id="environment-settings" style="color: inherit; text-decoration: none;">
+  <h3>Environment settings</h3>
+</a>
+<pre><code><span class="hl-3">export</span><span class="hl-1"> </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-5">environment</span><span class="hl-1"> = {</span><br/><span class="hl-1">  </span><span class="hl-0">production:</span><span class="hl-1"> </span><span class="hl-4">false</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-0">casperRPC:</span><span class="hl-1"> </span><span class="hl-6">&#39;https://node-clarity-testnet.make.services/rpc&#39;</span><span class="hl-1">, </span><span class="hl-7">//RPC url to retrieve and send data on the blockchain</span><br/><span class="hl-1">  </span><span class="hl-0">casperEnv:</span><span class="hl-1"> </span><span class="hl-6">&#39;casper-test&#39;</span><span class="hl-1">, </span><span class="hl-7">//casper (for mainnet) or casper-test (for testnet)</span><br/><span class="hl-1">  </span><span class="hl-0">bcGasFeesMin:</span><span class="hl-1"> </span><span class="hl-2">0</span><span class="hl-1">, </span><span class="hl-7">//minimum fees for the transaction with the blockchain</span><br/><span class="hl-1">  </span><span class="hl-0">bcGasFeesMax:</span><span class="hl-1"> </span><span class="hl-2">5</span><span class="hl-1">, </span><span class="hl-7">//maximum fees for the transaction with the blockchain</span><br/><span class="hl-1">  </span><span class="hl-0">bcGasFeesAsDefault:</span><span class="hl-1"> </span><span class="hl-2">1.5</span><span class="hl-1">, </span><span class="hl-7">// default fees for the transaction with the blockchain (can be changed within the app)</span><br/><span class="hl-1">  </span><span class="hl-0">version:</span><span class="hl-1"> </span><span class="hl-6">&quot;local&quot;</span><br/><span class="hl-1">};</span>
+</code></pre>
+<p>You have 2 environment files in the folder <strong>/src/environments</strong> :</p>
+<ul>
+<li>environment.ts</li>
+<li>envionrment.prod.ts</li>
+</ul>
+<p>The file &quot;environment.ts&quot; will be used for the dev deployment.<br>
+The file &quot;environment.prod.ts&quot; will be used when you build the app for production.</p>
+<p>Note that the property &quot;version&quot; is automatically set when building the app for a deployment.</p>
+
+<a href="#start-the-app-locally" id="start-the-app-locally" style="color: inherit; text-decoration: none;">
+  <h3>Start the app locally</h3>
+</a>
+<pre><code><span class="hl-0">ionic</span><span class="hl-1"> </span><span class="hl-0">serve</span>
+</code></pre>
+
+<a href="#build-the-web-version" id="build-the-web-version" style="color: inherit; text-decoration: none;">
+  <h3>Build the web version</h3>
+</a>
+<pre><code><span class="hl-0">ionic</span><span class="hl-1"> </span><span class="hl-0">build</span><span class="hl-1"> --</span><span class="hl-0">prod</span>
+</code></pre>
+<p>It will generate a &quot;www&quot; folder that you can upload to any web hosting.</p>
+
+<a href="#how-to-test" id="how-to-test" style="color: inherit; text-decoration: none;">
+  <h2>How to test</h2>
+</a>
+<p>Run the following command :</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">test</span>
+</code></pre>
+<p>The result should be like this :</p>
+<p><img src="resources/assets/tests.png" alt="img.png"></p>
+<p>Sometimes Jasmine generates an error and all bullets are green.
+If it&#39;s the case, run severals times the tests (and/or run in debug too).<br>
+I think it&#39;s something with the Ionic framework.</p>
+
+<a href="#how-to-generate-the-doc" id="how-to-generate-the-doc" style="color: inherit; text-decoration: none;">
+  <h2>How to Generate the doc</h2>
+</a>
+<p>Install the following package globally :</p>
+<pre><code><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-0">install</span><span class="hl-1"> </span><span class="hl-0">typedoc</span><span class="hl-1"> --</span><span class="hl-0">global</span>
+</code></pre>
+<p>Then you can generate a &quot;docs&quot; folder with all the documentation with :</p>
+<pre><code><span class="hl-0">typedoc</span><span class="hl-1"> --</span><span class="hl-0">out</span><span class="hl-1"> </span><span class="hl-0">docs</span><span class="hl-1"> --</span><span class="hl-0">entryPointStrategy</span><span class="hl-1"> </span><span class="hl-0">expand</span><span class="hl-1"> ./</span><span class="hl-0">src</span><span class="hl-7">/*</span>
+</code></pre>
+
+<a href="#user39s-guide" id="user39s-guide" style="color: inherit; text-decoration: none;">
+  <h2>User&#39;s guide</h2>
+</a>
+
+<a href="#how-to-add-an-authenticator-code-via-the-camera" id="how-to-add-an-authenticator-code-via-the-camera" style="color: inherit; text-decoration: none;">
+  <h3>How to add an authenticator code via the camera</h3>
+</a>
+<p>You can scan any QRCode with the camera of your device. But the app only recognize OTP qrcode and Export Qrcode.</p>
+<p>Once one of these 2 qrcode is recognize, the app will decode it and do the job.</p>
+
+<a href="#how-to-add-an-authenticator-code-manually" id="how-to-add-an-authenticator-code-manually" style="color: inherit; text-decoration: none;">
+  <h3>How to add an authenticator code manually</h3>
+</a>
+<p>To add or edit an authenticator code, click on the menu and select the menu item « Add Manually ».</p>
+<p>You must provide a name and an authenticator code.<br>
+Once it’s done, you can validate.<br>
+The new code will appear at the bottom of the list and give you the OTP password.</p>
+
+<a href="#how-to-manage-an-authenticator-code" id="how-to-manage-an-authenticator-code" style="color: inherit; text-decoration: none;">
+  <h3>How to manage an authenticator code</h3>
+</a>
+<p>To manage the code, click on the menu icon and then on the menu item « Manage »</p>
+<p>A new page will appear with news icons.<br>
+On the left, you can reorder the elements.<br>
+On the right, you can edit the name of the code or delete the code by clicking on the trash icon.</p>
+
+<a href="#how-to-desynchronize-authenticator-codes-on-the-casper39s-blockchain" id="how-to-desynchronize-authenticator-codes-on-the-casper39s-blockchain" style="color: inherit; text-decoration: none;">
+  <h3>How to (de)synchronize authenticator codes on the Casper&#39;s blockchain</h3>
+</a>
+<p><strong>The (de)synchronization with the blockchain is only possible with a PC using the Casper Signer extension.</strong></p>
+<p>If you don&#39;t know how to use the Signer, please follow these instructions : <a href="https://docs.cspr.community/docs/user-guides/SignerGuide.html">https://docs.cspr.community/docs/user-guides/SignerGuide.html</a></p>
+<p>On the app, click on the menu button. Then select the option « Blockchain Sync. ».</p>
+<p>A new page will appear where you can select the codes you want to (de)sync.<br>
+You can (de)sync. up to 5 codes at a time.<br>
+More will may cause an issue because length of the parameters cant exceed 1024bytes.</p>
+<p><img src="resources/assets/sync_menu.png" alt="sync_menue.png"><br></p>
+<p>Once you have selected yours codes, click on the icon to « sync » (5th icon) or « desync » (4th icon).</p>
+<p>The Signer will open and you’ll have the possibility to sign (or not) the transaction and send it on the blockchain.</p>
+<p>If you have an issue with the « out of gas » message, you can adapt the fees with the icon « fees ». Then try again…</p>
+<p>Menu Items :</p>
+<ul>
+<li>Show the blockchain parameters (gas fees, named key)</li>
+<li>Get the public key from the Casper&#39;s signer</li>
+<li>Desynchronize all secret codes</li>
+<li>Desynchronize the selected secret codes</li>
+<li>Syncrhonize the selected secret codes</li>
+<li>close the menu</li>
+</ul>
+
+<a href="#how-to-change-the-passphrase" id="how-to-change-the-passphrase" style="color: inherit; text-decoration: none;">
+  <h3>How to change the passphrase</h3>
+</a>
+<p>The passphrase is used to (de)encrypt the data stored on the blockchain.</p>
+<p>You can set the passphrase manually or generate a new one.</p>
+<p>You dont have to memorize your passphrase. You just have to use the Backup functionnality.</p>
+
+<a href="#how-to-backup-your-data" id="how-to-backup-your-data" style="color: inherit; text-decoration: none;">
+  <h3>How to backup your data</h3>
+</a>
+<p>To backup your data, you have to use the &quot;Export&quot;  functionality.</p>
+<p>It will generate a QRCode with all your infos.</p>
+
+<a href="#how-to-setuprestore-a-new-device" id="how-to-setuprestore-a-new-device" style="color: inherit; text-decoration: none;">
+  <h3>How to setup(restore) a new device</h3>
+</a>
+<p>The easiest way to setup a new device is to use the &quot;Backup functionality&quot;.</p>
+<p>You generate a backup (using the &quot;Export&quot; functionality) and store it somewhere in a safe place. Then scan this QRCode on the new device.</p>
+<p><strong>You must use it in that way if you want to setup a smartphone/tablet</strong></p>
+<p>If you want to restore your data on a desktop, you can use the procedure just above or following these steps :</p>
+<ul>
+<li>Setup the passphrase used to store the secret codes</li>
+<li>Click on &quot;Blockchain Sync.&quot; menu item</li>
+<li>Select the &quot;Parameters&quot; and define the correct named key</li>
+<li>Click on the &quot;Wallet&quot; menu item, it will select the current public key associated to the casper signer. If it&#39;s not the correct one, select it in the casper signer and click again on the &quot;wallet&quot; menu item.</li>
+</ul>
+<p>Note : If you use this procedure, the secret codes not sync. with the blockchain will be lost.</p>
+
+<a href="#what-the-colors-mean" id="what-the-colors-mean" style="color: inherit; text-decoration: none;">
+  <h3>What the colors mean</h3>
+</a>
+<p>You can easily know if the authenticator code is sync with the blockchain with the color.</p>
+<p>If the code is « gray » that means that the code is successfully sync with the blockchain.</p>
+<p>If the code is « orange » that means that the code is not yet sync with the blockchain.</p>
+
+<a href="#how-to-copy-the-code-to-the-clipboard" id="how-to-copy-the-code-to-the-clipboard" style="color: inherit; text-decoration: none;">
+  <h3>How to copy the code to the clipboard</h3>
+</a>
+<p>You can copy the code to the clipoard by clicking on it. A message will appear to confirm it.</p>
+
+<a href="#what-to-do-to-use-the-app-with-another-blockchain" id="what-to-do-to-use-the-app-with-another-blockchain" style="color: inherit; text-decoration: none;">
+  <h3>What to do to use the app with another blockchain</h3>
+</a>
+<p>If you want to use this app with another blockchain, you have first to write the <a href="https://github.com/caspercommunityio/blockchain-authenticator-contract">associated smartcontract</a>.</p>
+<p>Then you have to adapt the code of the &quot;src/app/services/blockchain.service.ts&quot;.</p>
+<p>This class contains the call to the smartcontract (to write in the blockchain) and the retrieve data (to get the code back from the blockchain).</p>
+<p>Once the contract is builded, put it in the folder &quot;src/assets&quot;</p>
+
+<a href="#can-i-add-new-codes-on-my-phone-before-my-pc" id="can-i-add-new-codes-on-my-phone-before-my-pc" style="color: inherit; text-decoration: none;">
+  <h3>Can I add new codes on my phone before my PC</h3>
+</a>
+<p>It’s not mandatory to add only new codes on your PC.</p>
+<p>You can add new codes on your phone and then use the « export » functionality to sync the data between your PC and your mobile.</p>
+<p>Once it’s sync on the blockchain, you’ll see the color changed in the interface.</p>
+
+<a href="#how-to-install-blockchain-authenticator-as-a-pwa-progressive-web-app-on-your-desktop-smartphone-ios-and-android" id="how-to-install-blockchain-authenticator-as-a-pwa-progressive-web-app-on-your-desktop-smartphone-ios-and-android" style="color: inherit; text-decoration: none;">
+  <h3>How to install Blockchain Authenticator as a PWA (Progressive Web App) on your desktop, smartphone (iOS and Android)</h3>
+</a>
+<p><img src="resources/assets/pwa_pc.png" alt="img.png"></p>
+<p>On chrome, you&#39;ll have a small desktop icon on the right side of the URL adress.</p>
+<p>Click on it. It will display a popup asking you to install or not the app.</p>
+<p><img src="resources/assets/pwa_install.png" alt="img.png"></p>
+<p>Once installed, you can retrieve the application back like any other application.<br>
+In my case, I use ubuntu and I can find it back</p>
+<p><img src="resources/assets/pwa_open.png" alt="img.png"></p>
+<p>On your smartphone, just go to the website and add it on your home screen.</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p>The Blockchain Authenticator App is open-sourced software licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+<p>The Ionic framework is open-sourced software licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">blockchain-<wbr/>authenticator</a>
+<ul>
+<li class="tsd-kind-module"><a href="modules/app_app_routing_module.html">app/app-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_app_component.html">app/app.component</a></li>
+<li class="tsd-kind-module"><a href="modules/app_app_module.html">app/app.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_home_home_routing_module.html">app/home/home-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_home_home_module.html">app/home/home.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_home_home_page.html">app/home/home.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_bc_parameters_bc_parameters_routing_module.html">app/modals/bc-<wbr/>parameters/bc-<wbr/>parameters-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_bc_parameters_bc_parameters_module.html">app/modals/bc-<wbr/>parameters/bc-<wbr/>parameters.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_bc_parameters_bc_parameters_page.html">app/modals/bc-<wbr/>parameters/bc-<wbr/>parameters.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_enter_secret_code_enter_secret_code_routing_module.html">app/modals/enter-<wbr/>secret-<wbr/>code/enter-<wbr/>secret-<wbr/>code-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_enter_secret_code_enter_secret_code_module.html">app/modals/enter-<wbr/>secret-<wbr/>code/enter-<wbr/>secret-<wbr/>code.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_enter_secret_code_enter_secret_code_page.html">app/modals/enter-<wbr/>secret-<wbr/>code/enter-<wbr/>secret-<wbr/>code.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_menu_menu_routing_module.html">app/modals/menu/menu-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_menu_menu_module.html">app/modals/menu/menu.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_menu_menu_page.html">app/modals/menu/menu.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_passphrase_passphrase_routing_module.html">app/modals/passphrase/passphrase-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_passphrase_passphrase_module.html">app/modals/passphrase/passphrase.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_modals_passphrase_passphrase_page.html">app/modals/passphrase/passphrase.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrcode_export_qrcode_export_routing_module.html">app/qrcode-<wbr/>export/qrcode-<wbr/>export-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrcode_export_qrcode_export_module.html">app/qrcode-<wbr/>export/qrcode-<wbr/>export.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrcode_export_qrcode_export_page.html">app/qrcode-<wbr/>export/qrcode-<wbr/>export.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrscanner_qrscanner_routing_module.html">app/qrscanner/qrscanner-<wbr/>routing.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrscanner_qrscanner_module.html">app/qrscanner/qrscanner.module</a></li>
+<li class="tsd-kind-module"><a href="modules/app_qrscanner_qrscanner_page.html">app/qrscanner/qrscanner.page</a></li>
+<li class="tsd-kind-module"><a href="modules/app_services_blockchain_service.html">app/services/blockchain.service</a></li>
+<li class="tsd-kind-module"><a href="modules/app_services_storage_service.html">app/services/storage.service</a></li>
+<li class="tsd-kind-module"><a href="modules/app_services_utils_service.html">app/services/utils.service</a></li>
+<li class="tsd-kind-module"><a href="modules/environments_environment.html">environments/environment</a></li>
+<li class="tsd-kind-module"><a href="modules/environments_environment_prod.html">environments/environment.prod</a></li></ul></li></ul></div></details></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>

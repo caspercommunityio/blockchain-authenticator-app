@@ -6,9 +6,9 @@
 Webapp to generate TOTP (Time based One-Time Password) password.
 
 The secret code needed to generate the OTP (One-Time Password) can be stored on the blockchain of your choice.<br>
-In our case, we've started with the Casper's Blockchain. For that reason, we've writed a [basic smartcontrat]( https://github.com/caspercommunityio/blockchain-authenticator-contract)
+In our case, we've started with Casper's Blockchain. For that reason, we've created a [basic smartcontrat]( https://github.com/caspercommunityio/blockchain-authenticator-contract)
 
-The last version of this smartcontract is include in the sources (see : src/assets)
+The last version of this smartcontract is included in the sources (see : src/assets)
 
 ## Live Version
 
@@ -101,9 +101,9 @@ typedoc --out docs --entryPointStrategy expand ./src/*
 
 ### How to add an authenticator code via the camera
 
-You can scan any QRCode with the camera of your device. But the app only recognize OTP qrcode and Export Qrcode.
+You can scan any QRCode with the camera of your device. But the app only recognizes OTP qrcode and Export Qrcode.
 
-Once one of these 2 qrcode is recognize, the app will decode it and do the job.
+Once one of these 2 qrcode is recognized, the app will decode it and do the job.
 
 ### How to add an authenticator code manually
 
@@ -135,7 +135,7 @@ More will may cause an issue because length of the parameters cant exceed 1024by
 
 ![sync_menue.png](resources/assets/sync_menu.png)<br>
 
-Once you have selected yours codes, click on the icon to « sync » (5th icon) or « desync » (4th icon).
+Once you have selected your codes, click on the icon to « sync » (5th icon) or « desync » (4th icon).
 
 The Signer will open and you’ll have the possibility to sign (or not) the transaction and send it on the blockchain.
 
@@ -156,7 +156,7 @@ The passphrase is used to (de)encrypt the data stored on the blockchain.
 
 You can set the passphrase manually or generate a new one.
 
-You dont have to memorize your passphrase. You just have to use the Backup functionnality.
+You dont have to memorize your passphrase. You just have to use the Backup functionality.
 
 ### How to backup your data
 
@@ -177,9 +177,9 @@ If you want to restore your data on a desktop, you can use the procedure just ab
 - Setup the passphrase used to store the secret codes
 - Click on "Blockchain Sync." menu item
 - Select the "Parameters" and define the correct named key
-- Click on the "Wallet" menu item, it will select the current public key associated to the casper signer. If it's not the correct one, select it in the casper signer and click again on the "wallet" menu item.
+- Click on the "Wallet" menu item, it will select the current public key associated with the casper signer. If it's not the correct one, select it in the casper signer and click again on the "wallet" menu item.
 
-Note : If you use this procedure, the secret codes not sync. with the blockchain will be lost.
+Note : If you use this procedure, the secret codes do not sync. with the blockchain will be lost.
 
 ### What the colors mean
 
@@ -191,7 +191,7 @@ If the code is « orange » that means that the code is not yet sync with the 
 
 ### How to copy the code to the clipboard
 
-You can copy the code to the clipoard by clicking on it. A message will appear to confirm it.
+You can copy the code to the clipboard by clicking on it. A message will appear to confirm it.
 
 ### What to do to use the app with another blockchain
 
@@ -215,7 +215,7 @@ Once it’s sync on the blockchain, you’ll see the color changed in the interf
 
 ![img.png](resources/assets/pwa_pc.png)
 
-On chrome, you'll have a small desktop icon on the right side of the URL adress.
+On chrome, you'll have a small desktop icon on the right side of the URL address.
 
 Click on it. It will display a popup asking you to install or not the app.
 

@@ -7,8 +7,8 @@ export const environment = {
   casperRPC: 'https://node-clarity-testnet.make.services/rpc', //RPC url to retrieve and send data on the blockchain
   casperEnv: 'casper-test', //casper (for mainnet) or casper-test (for testnet)
   bcGasFeesMin: 0, //minimum fees for the transaction with the blockchain
-  bcGasFeesMax: 5, //maximum fees for the transaction with the blockchain
-  bcGasFeesAsDefault: 1.5, // default fees for the transaction with the blockchain (can be changed within the app)
+  bcGasFeesMax: 10, //maximum fees for the transaction with the blockchain
+  bcGasFeesAsDefault: 3.5, // default fees for the transaction with the blockchain (can be changed within the app)
   version: "local"
 };
 

@@ -2,19 +2,24 @@
   <ion-toolbar color="light">
     <ion-buttons slot="primary">
       <ion-button *ngIf="status == 'sync'" color="casper" (click)="setBlockchainParams()">
-        <ion-icon slot="icon-only" name="cog-outline"></ion-icon>
+        <ion-icon slot="start" name="cog-outline"></ion-icon>
+        Params
       </ion-button>
       <ion-button *ngIf="status == 'sync'" color="casper" (click)="selectWalletPublicKey()">
-        <ion-icon slot="icon-only" name="wallet-outline"></ion-icon>
+        <ion-icon slot="start" name="wallet-outline"></ion-icon>
+        Wallet
       </ion-button>
       <ion-button *ngIf="status == 'sync'" color="casper" (click)="desyncAllData()">
-        <ion-icon slot="icon-only" name="cloud-offline-outline"></ion-icon>
+        <ion-icon slot="start" name="cloud-offline-outline"></ion-icon>
+        Unsync. All
       </ion-button>
       <ion-button *ngIf="status == 'sync'" color="casper" (click)="syncToBlockchain('del')">
-        <ion-icon slot="icon-only" name="cloud-download-outline"></ion-icon>
+        <ion-icon slot="start" name="cloud-download-outline"></ion-icon>
+        Unsync.
       </ion-button>
       <ion-button *ngIf="status == 'sync'" color="casper" (click)="syncToBlockchain('add')">
-        <ion-icon slot="icon-only" name="cloud-upload-outline"></ion-icon>
+        <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+        Sync.
       </ion-button>
       <ion-button *ngIf="status == 'normal'" id="trigger-button" color="casper" (click)="showMenu()">
         <ion-icon slot="icon-only" name="menu-outline"></ion-icon>

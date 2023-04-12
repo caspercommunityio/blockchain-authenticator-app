@@ -18,6 +18,12 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Clipboard } from '@capacitor/clipboard';
 
+let casperWallet = undefined;// (window as any).CasperWalletProvider();
+try {
+  casperWallet = (window as any).CasperWalletProvider();
+} catch (e) {
+  console.log("e")
+}
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -39,8 +45,6 @@ export class HomePage {
     activeKey: undefined,
     label: "Locked"
   };
-
-
   constructor(private platform: Platform, private alertController: AlertController, private route: ActivatedRoute, private navController: NavController, private modalController: ModalController, private blockchainService: BlockchainService, private storageService: StorageService, private utilsService: UtilsService) { }
 
   /**
@@ -67,6 +71,16 @@ export class HomePage {
     }
     //Generate fresh new tokens
     this.generateTokens();
+
+    //Casper wallet
+    // console.log(casperWallet);
+    setTimeout(() => {
+      casperWallet.isConnected().then(c => {
+        if (!c) {
+          casperWallet.requestConnection();
+        }
+      });
+    }, 2000)
   }
 
   /**
@@ -426,13 +440,6 @@ export class HomePage {
       this.utilsService.presentToast('Please select at least one element.', 'warning');
     } else {
 
-      if (!this.signerStatus.isUnlocked) {
-        try {
-          await Signer.sendConnectionRequest();
-        } catch (err) {
-          this.utilsService.presentToast('Check that the Casper\'s extension is installed', 'danger');
-        }
-      }
       try {
         let dataToStore = [];
         let tmp = JSON.parse(JSON.stringify(this.secretCodes));
@@ -451,7 +458,7 @@ export class HomePage {
         this.storageService.setSecretCodes(this.secretCodes);
       } catch (err) {
         console.log(err);
-        this.utilsService.presentToast('Please check that the \'Casper Signer\' is unlocked and connected.', 'danger');
+        this.utilsService.presentToast('Please check that the \'Casper Wallet\' is unlocked and connected.', 'danger');
       }
     }
   }
@@ -485,19 +492,21 @@ export class HomePage {
   }
 
   /**
-   * async selectWalletPublicKey - Get the public key associated to the casper signer
+   * async selectWalletPublicKey - Get the public key associated to the Casper Wallet
    *
    * @return {type}  description
    */
   async selectWalletPublicKey() {
-    if (!this.signerStatus.isUnlocked) {
+    if (!await casperWallet.isConnected()) {
       try {
-        await Signer.sendConnectionRequest();
+        await casperWallet.requestConnection();
       } catch (err) {
         this.utilsService.presentToast('Check that the Casper\'s extension is installed', 'danger');
       }
     } else {
-      await this.storageService.setAccountPublicKey(this.signerStatus.activeKey);
+      let publicKey = await casperWallet.getActivePublicKey();
+      await this.storageService.setAccountPublicKey(publicKey);
+      this.signerStatus.activeKey = publicKey;
       this.utilsService.presentToast("The selected Public Key (" + this.signerStatus.activeKey.substr(0, 4) + "..." + this.signerStatus.activeKey.substr(-4) + ") from your wallet is stored ", "success");
     }
   }
@@ -520,23 +529,60 @@ export class HomePage {
   }
 
   /**
-   * updateSignerStatus - Update the Casper Signer Object
+   * updateSignerStatus - Update the Casper Wallet Object
    *
-   * @param  {type} newStatus new status of the casper signer returned by the chrome extension
+   * @param  {type} newStatus new status of the Casper Wallet returned by the chrome extension
    * @return {type}           description
    */
-  updateSignerStatus(newStatus) {
-    this.signerStatus.isUnlocked = newStatus.detail.isUnlocked;
-    this.signerStatus.activeKey = newStatus.detail.activeKey;
-    this.signerStatus.isConnected = newStatus.detail.isConnected;
+  updateSignerStatus(newStatus, wallet?) {
+    if (wallet == "casperwallet") {
+      let details = JSON.parse(newStatus.detail);
+      this.signerStatus.isUnlocked = !details.isUnlocked;
+      this.signerStatus.activeKey = details.activeKey;
+      this.signerStatus.isConnected = details.isConnected;
+
+    } else {
+      this.signerStatus.isUnlocked = newStatus.detail.isUnlocked;
+      this.signerStatus.activeKey = newStatus.detail.activeKey;
+      this.signerStatus.isConnected = newStatus.detail.isConnected;
+
+    }
+
     this.initSignerLabel();
     this.storageService.setAccountPublicKey(this.signerStatus.activeKey);
   }
 
 
   /**
-   * Events from the Casper Signer where we are listening at
+   * Events from the Casper Wallet where we are listening at
    */
+  @HostListener('window:casper-wallet:connected', ['$event'])
+  CasperWalletInitialState(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+  @HostListener('window:casper-wallet:locked', ['$event'])
+  CasperWalletLocked(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+  @HostListener('window:casper-wallet:unlocked', ['$event'])
+  CasperWalletUnlocked(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+  @HostListener('window:casper-wallet:disconnected', ['$event'])
+  CasperWalletDisconnected(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+  @HostListener('window:casper-wallet:tabUpdated', ['$event'])
+  CasperWalletTabUpdated(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+  @HostListener('window:casper-wallet:activeKeyChanged', ['$event'])
+  CasperWalletActiveKeyChanged(event: any) {
+    this.updateSignerStatus(event, "casperwallet");
+  }
+
+
+
   @HostListener('window:signer:initialState', ['$event'])
   signerInitialState(event: any) {
     this.updateSignerStatus(event);
@@ -565,7 +611,5 @@ export class HomePage {
   signedActiveKeyChanged(event: any) {
     this.updateSignerStatus(event);
   }
-
-
 
 }

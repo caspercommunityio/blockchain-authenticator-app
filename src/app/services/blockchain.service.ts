@@ -4,6 +4,14 @@ import { from, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { StorageService } from './storage.service'
+
+let casperWallet = undefined;// (window as any).CasperWalletProvider();
+try {
+  casperWallet = (window as any).CasperWalletProvider();
+} catch (e) {
+  console.log("e")
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,8 +30,9 @@ export class BlockchainService {
    */
   async callContract(method, data) {
     const client = new CasperClient(environment.casperRPC);
-    const activeKey = await Signer.getActivePublicKey();
+    const activeKey = await casperWallet.getActivePublicKey();//await Signer.getActivePublicKey();
     const activePublicKey = CLPublicKey.fromHex(activeKey);
+
 
     const clKeyParam = new CLAccountHash(activePublicKey.toAccountHash());
 
@@ -100,10 +109,23 @@ export class BlockchainService {
       session,
       payment
     );
+    console.log("Active", activeKey)
 
     let signedDeployJSON;
     try {
-      signedDeployJSON = await Signer.sign(DeployUtil.deployToJson(deploy), activeKey, activeKey);
+      //signedDeployJSON = await Signer.sign(DeployUtil.deployToJson(deploy), activeKey, activeKey);
+      let signature = await casperWallet.sign(JSON.stringify(DeployUtil.deployToJson(deploy)), activeKey);
+      // console.log(signature)
+      if (signature.cancelled) {
+        alert('Sign cancelled');
+      } else {
+        let deploySigned = DeployUtil.setSignature(
+          deploy,
+          signature.signature,
+          CLPublicKey.fromHex(activeKey)
+        );
+        signedDeployJSON = DeployUtil.deployToJson(deploySigned)
+      }
     } catch (err) {
       alert(err.message);
       return false;

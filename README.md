@@ -12,7 +12,7 @@ The last version of this smartcontract is included in the sources (see : src/ass
 
 ## Live Version
 
-You must have the Casper Signer installed to use this app. <br>If you don't know how to use the Signer, please [follow these instructions](https://docs.cspr.community/docs/user-guides/SignerGuide.html)
+You must have the Casper Wallet installed to use this app. <br>If you don't know how to use the Signer, please [follow these instructions](https://docs.cspr.community/docs/user-guides/SignerGuide.html)
 
 You can access the mainnet app at https://authenticator.caspercommunity.io
 
@@ -123,7 +123,7 @@ On the right, you can edit the name of the code or delete the code by clicking o
 
 ### How to (de)synchronize authenticator codes on the Casper's blockchain
 
-**The (de)synchronization with the blockchain is only possible with a PC using the Casper Signer extension.**
+**The (de)synchronization with the blockchain is only possible with a PC using the Casper Wallet extension.**
 
 If you don't know how to use the Signer, please follow these instructions : https://docs.cspr.community/docs/user-guides/SignerGuide.html
 
@@ -177,7 +177,7 @@ If you want to restore your data on a desktop, you can use the procedure just ab
 - Setup the passphrase used to store the secret codes
 - Click on "Blockchain Sync." menu item
 - Select the "Parameters" and define the correct named key
-- Click on the "Wallet" menu item, it will select the current public key associated with the casper signer. If it's not the correct one, select it in the casper signer and click again on the "wallet" menu item.
+- Click on the "Wallet" menu item, it will select the current public key associated with the Casper Wallet. If it's not the correct one, select it in the Casper Wallet and click again on the "wallet" menu item.
 
 Note : If you use this procedure, the secret codes do not sync. with the blockchain will be lost.
 
